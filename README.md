@@ -15,6 +15,32 @@ By default UmbrellawebGoogleGeocodingApiBundle use ``json`` response format. For
 
 UmbrellawebGoogleGeocodingApiBundle provides to get full results array and separate result's part like Latitude and Longitude in a convenient format.
 
+## Installation
+
+1. Add the ``umbrella-web/sf2-google-geocoding-api-bundle`` package to your ``require`` section in the ``composer.json`` file.
+
+    "require": {
+        // ...
+        "umbrella-web/sf2-google-geocoding-api-bundle": "dev-master"
+    }
+    
+2. Update package
+
+    $ composer update umbrella-web/sf2-google-geocoding-api-bundle
+
+3. Add Umbrella-web Google Geocoding API Bundle into AppKernel.php
+
+    <?php
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new Umbrellaweb\Bundle\GoogleGeocodingApiBundle\UmbrellawebGoogleGeocodingApiBundle(),
+            // ...
+        );
+        ...
+    }
+
 ## Usage
 
 The bundle provides a service available via the ``umbrellaweb.google_geo_api.manager``
