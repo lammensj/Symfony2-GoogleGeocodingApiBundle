@@ -1,8 +1,8 @@
 {
     "name": "umbrella-web/sf2-google-geocoding-api-bundle",
-    "type": "symfony2-bundle",
+    "type": "symfony-bundle",
     "description": " Google Geocoding API integration for your Symfony2 project",
-    "keywords": ["google","geocoding", "geolocation"],
+    "keywords": ["symfony2", "google","geocoding", "geolocation"],
     "homepage": "https://github.com/umbrella-web/sf2-GoogleGeocodingApiBundle",
     "license": "MIT",
     "authors": [

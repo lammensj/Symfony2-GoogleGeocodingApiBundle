@@ -2,46 +2,50 @@
 
 namespace Umbrellaweb\Bundle\GoogleGeocodingApiBundle\Geolocation;
 
-use Umbrellaweb\Bundle\GoogleGeocodingApiBundle\Geolocation\GoogleResponse;
+use Umbrellaweb\Bundle\GoogleGeocodingApiBundle\Geolocation\GeocodeResponse;
+use Umbrellaweb\Bundle\GoogleGeocodingApiBundle\Exception\GeocodeException;
 
 /**
- * class to provide some actions with Google Map API
+ * Class to provide intagration with Google Geocoding API
  * 
- * Send request to google map api service and return instance of the GoogleResponse class
+ * Send request to google map api service and return instance of the GeocodeResponse class
  * 
  * @link http://code.google.com/apis/maps/documentation/geocoding/
  */
-class GeocodeManager
-{
+class GeocodeManager {
 
     /**
-     * url to send api request 
+     * Google Geocoding API base url 
+     * @see https://developers.google.com/maps/documentation/geocoding/#GeocodingRequests
+     * @var string
+     */
+    const API_BASE_URL = "http://maps.googleapis.com/maps/api/geocode/";
+
+    /**
+     * Сompound url to send API request 
      * @var string 
      */
-    protected $_url = "http://maps.googleapis.com/maps/api/geocode/";
+    protected $_url;
 
-    public function __construct($response_format = 'json')
-    {
+    public function __construct($response_format = 'json') {
         //set response format to url
-        $this->_url = $this->_url . $response_format . '?';
+        $this->_url = self::API_BASE_URL . $response_format . '?';
     }
 
     /**
-     * Send request to google by curl
+     * Convert Address string to Geocode information object
      * 
-     * @param array $parameters
+     * @param array $parameters example:array('address' => 'New York', 'sensor' => 'false')
+     * 
      * @return \PRL\_ServiceBundle\GoogleMapsApi\GeocodeManager
      */
-    public function sendRequest(array $parameters)
-    {
-        try
-        {
+    public function geocodeAddress(array $parameters) {
+        try {
             $response = $this->_request($this->_url . $this->_urlParamsEncode($parameters));
-        } catch (\Exception $e)
-        {
-            return new GoogleResponse($e);
+        } catch (GeocodeException $e) {
+            return new GeocodeResponse($e);
         }
-        return new GoogleResponse($response);
+        return new GeocodeResponse($response);
     }
 
     /**
@@ -49,9 +53,9 @@ class GeocodeManager
      * 
      * @param string $url
      * @param array $options Additional CURL options
+     * @throws GeocodeException
      */
-    protected function _request($url, array $options = array())
-    {
+    protected function _request($url, array $options = array()) {
         $default = array(
             CURLOPT_RETURNTRANSFER => TRUE, // return web page
             CURLOPT_HEADER => FALSE, // don't return headers
@@ -79,9 +83,9 @@ class GeocodeManager
         if (in_array($curl_info['http_code'], array(200, 301)))
             return $result;
         if ($curl_error)
-            throw new \Exception($curl_error);
+            throw new GeocodeException($curl_error);
         if (!$result['body'])
-            throw new \Exception("Body of file is empty");
+            throw new GeocodeException("Body of file is empty");
     }
 
     /**
@@ -90,12 +94,10 @@ class GeocodeManager
      * @param array $parameters
      * @return string
      */
-    protected function _urlParamsEncode(array $parameters)
-    {
+    protected function _urlParamsEncode(array $parameters) {
         $return = '';
-        foreach ($parameters as $key => $value)
-        {
-            $return .= $key . '=' . $value . '&';
+        foreach ($parameters as $key => $value) {
+            $return .= $key . '=' . urlencode($value) . '&';
         }
         return rtrim($return, '&');
     }
