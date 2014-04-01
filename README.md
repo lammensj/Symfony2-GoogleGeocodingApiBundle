@@ -1,20 +1,19 @@
-UmbrellawebGoogleGeocodingApiBundle
-========================
+## UmbrellawebGoogleGeocodingApiBundle
 
-Provides interaction with The Google Geocoding API v3 (@see https://developers.google.com/maps/documentation/geocoding/ for more info).
+Provides interaction with The Google Geocoding API v3 (see https://developers.google.com/maps/documentation/geocoding/ for more info).
 
-UmbrellawebGoogleGeocodingApiBundle gives the opportunity convert addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739),via Google Geocoding API service. (@see https://developers.google.com/maps/documentation/geocoding/#Geocoding).
+UmbrellawebGoogleGeocodingApiBundle gives the opportunity convert addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739),via Google Geocoding API service. (see https://developers.google.com/maps/documentation/geocoding/#Geocoding).
 Later you can use geographic coordinates to place markers or position the map.
 
 ## Usage Limits
 
-Current UmbrellawebGoogleGeocodingApiBundle version 1.0.0 does not use API key. And Users of the free API have limit 2,500 requests per 24 hour period. For more info about API Key @see https://developers.google.com/maps/documentation/geocoding/#api_key
+Current UmbrellawebGoogleGeocodingApiBundle version 1.0.0 does not use API key. And Users of the free API have limit 2,500 requests per 24 hour period. For more info about API Key see https://developers.google.com/maps/documentation/geocoding/#api_key
 
 ## Geocoding Responses
 
-By default UmbrellawebGoogleGeocodingApiBundle use ``json`` response format. For more info about response structure @see https://developers.google.com/maps/documentation/geocoding/#JSON
+By default UmbrellawebGoogleGeocodingApiBundle use ``json`` response format. For more info about response structure see https://developers.google.com/maps/documentation/geocoding/#JSON
 
-UmbrellawebGoogleGeocodingApiBundle provides get full results array and separate result's part like Latitude and Longitude in a convenient format.
+UmbrellawebGoogleGeocodingApiBundle provides to get full results array and separate result's part like Latitude and Longitude in a convenient format.
 
 ## Usage
 
@@ -28,8 +27,8 @@ To retrieve the service from the container, use the following code in your contr
 ### Basic usage
 
 Examples of usage:
-  
-   $geoResponse = $this->get('umbrellaweb.google_geo_api.manager')->geocodeAddress(array('address' => '1600 Amphitheatre Parkway, Mountain View, CA', 'sensor' => 'false'));
+
+    $geoResponse = $this->get('umbrellaweb.google_geo_api.manager')->geocodeAddress(array('address' => '1600 Amphitheatre Parkway, Mountain View, CA', 'sensor' => 'false'));
 
     // checking if there was some errors
     if (!$geoResponse->isSuccess()) {
