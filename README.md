@@ -17,18 +17,18 @@ UmbrellawebGoogleGeocodingApiBundle provides to get full results array and separ
 
 ## Installation
 
-1. Add the ``umbrella-web/sf2-google-geocoding-api-bundle`` package to your ``require`` section in the ``composer.json`` file.
+Add the ``umbrella-web/sf2-google-geocoding-api-bundle`` package to your ``require`` section in the ``composer.json`` file.
 
     "require": {
         // ...
         "umbrella-web/sf2-google-geocoding-api-bundle": "dev-master"
     }
     
-2. Update package
+Update package
 
     $ composer update umbrella-web/sf2-google-geocoding-api-bundle
 
-3. Add Umbrella-web Google Geocoding API Bundle into AppKernel.php
+Add Umbrella-web Google Geocoding API Bundle into ``app/AppKernel.php``
 
     <?php
     public function registerBundles()
