@@ -41,7 +41,7 @@ class GeocodeManager {
      */
     public function geocodeAddress(array $parameters) {
         try {
-            $response = $this->_request($this->_url . $this->_urlParamsEncode($parameters));
+            $response = $this->request($this->_url . $this->urlParamsEncode($parameters));
         } catch (GeocodeException $e) {
             return new GeocodeResponse($e);
         }
@@ -55,7 +55,7 @@ class GeocodeManager {
      * @param array $options Additional CURL options
      * @throws GeocodeException
      */
-    protected function _request($url, array $options = array()) {
+    protected function request($url, array $options = array()) {
         $default = array(
             CURLOPT_RETURNTRANSFER => TRUE, // return web page
             CURLOPT_HEADER => FALSE, // don't return headers
@@ -94,7 +94,7 @@ class GeocodeManager {
      * @param array $parameters
      * @return string
      */
-    protected function _urlParamsEncode(array $parameters) {
+    protected function urlParamsEncode(array $parameters) {
         $return = '';
         foreach ($parameters as $key => $value) {
             $return .= $key . '=' . urlencode($value) . '&';
