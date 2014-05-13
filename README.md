@@ -1,5 +1,7 @@
 ## UmbrellawebGoogleGeocodingApiBundle
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c2812ab9-2fcd-479e-a1ab-9d0fa27c8b1f/big.png)](https://insight.sensiolabs.com/projects/c2812ab9-2fcd-479e-a1ab-9d0fa27c8b1f)
+
 Provides interaction with The Google Geocoding API v3 (see https://developers.google.com/maps/documentation/geocoding/ for more info).
 
 UmbrellawebGoogleGeocodingApiBundle gives the opportunity convert addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739),via Google Geocoding API service. (see https://developers.google.com/maps/documentation/geocoding/#Geocoding).
