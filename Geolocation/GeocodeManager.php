@@ -84,7 +84,7 @@ class GeocodeManager {
             return $result;
         if ($curl_error)
             throw new GeocodeException($curl_error);
-        if (!$result['body'])
+        if (!isset($result['body']) && !$result['body'])
             throw new GeocodeException("Body of file is empty");
     }
 
