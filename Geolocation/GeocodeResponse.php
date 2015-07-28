@@ -109,7 +109,7 @@ class GeocodeResponse {
 
         if (!empty($results)) {
             foreach ($results['address_components'] as $component) {
-                if ($component['types'][0] == 'country') {
+                if (in_array('country', $component['types'])) {
                     return $component['short_name'];
                 }
             }
